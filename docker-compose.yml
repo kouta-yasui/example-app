@@ -53,3 +53,14 @@ networks:
 volumes:
     sail-mysql:
         driver: local
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  restart: always
+  ports:
+    - 8080:80
+  environment:
+    PMA_HOST: db
+    PMA_USER: root
+    PMA_PASSWORD: your_db_password
+  depends_on:
+    - db
